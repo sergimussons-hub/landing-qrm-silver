@@ -453,7 +453,7 @@
         </ul>
       </div>
 
-      <form id="contactForm" action="https://formspree.io/f/TU_ID_AQUI" method="POST">
+      <form id="contactForm" action="https://formspree.io/f/mgoggdld" method="POST">
         <input type="hidden" name="_subject" value="Nueva solicitud · QRM Silver Certificate">
         <div class="row2">
           <div class="field">
@@ -517,23 +517,31 @@
 </footer>
 
 <script>
-  // Envío del formulario vía fetch (requiere configurar el action con tu servicio de formularios)
+  // Envío del formulario vía fetch a Formspree (sin recargar la página)
   const form = document.getElementById('contactForm');
   const msg = document.getElementById('formMsg');
+  const btn = form.querySelector('button[type="submit"]');
   form.addEventListener('submit', async function(e){
-    // Si el action sigue sin configurar, evita el envío y avisa por consola
-    if (form.action.includes('TU_ID_AQUI')) {
-      e.preventDefault();
-      msg.style.display = 'block';
-      msg.style.color = '#f7b955';
-      msg.textContent = 'Formulario en modo demo: configura el destino del formulario para recibir las solicitudes.';
-      return;
-    }
     e.preventDefault();
+    const btnText = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    msg.style.display = 'none';
     try{
       const res = await fetch(form.action, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
-      if(res.ok){ form.reset(); msg.style.display='block'; }
-    }catch(err){ /* noop */ }
+      if(res.ok){
+        form.reset();
+        msg.style.color = '#7bd88f';
+        msg.textContent = '¡Gracias! Hemos recibido tu solicitud y te contactaremos pronto.';
+      } else {
+        msg.style.color = '#f7b955';
+        msg.textContent = 'No se pudo enviar. Escríbenos a info@qrminstitute.com o inténtalo de nuevo.';
+      }
+    }catch(err){
+      msg.style.color = '#f7b955';
+      msg.textContent = 'No se pudo enviar. Escríbenos a info@qrminstitute.com o inténtalo de nuevo.';
+    }
+    msg.style.display = 'block';
+    btn.disabled = false; btn.textContent = btnText;
   });
 </script>
 

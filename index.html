@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>QRM Silver Certificate | Programa de formación · QRM Institute</title>
 <meta name="description" content="Programa QRM Silver Certificate del QRM Institute. Aprende a reducir los plazos de entrega y a transformar tu empresa en una organización ágil. Semipresencial, 90h. Del 20 de octubre al 21 de diciembre de 2026.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="256x256" href="favicon-256.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1c355e">
 <style>
   :root{
     --ink:#1c355e;         /* QRM Institute navy — títulos y texto principal */
@@ -187,6 +191,8 @@
   .field input::placeholder,.field textarea::placeholder{color:#8b9bb8}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:#a7b3c9}
+  .consent a{color:#fff;text-decoration:underline}
+  .consent a:hover{color:var(--accent)}
   .consent input{margin-top:4px}
   form .btn{width:100%;padding:15px;font-size:1rem;margin-top:4px}
   .form-msg{font-size:.9rem;color:#7bd88f;display:none;text-align:center}
@@ -200,6 +206,8 @@
   .foot-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);margin-bottom:12px}
   .foot-col p{margin-bottom:6px}
   .copyright{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);text-align:center}
+  .copyright a{color:var(--ink-soft);text-decoration:underline}
+  .copyright a:hover{color:var(--accent)}
 
   /* Responsive */
   @media (max-width:860px){
@@ -481,7 +489,7 @@
         </div>
         <label class="consent">
           <input type="checkbox" name="consentimiento" required>
-          <span>Acepto la política de privacidad y el tratamiento de mis datos para recibir información sobre el programa.</span>
+          <span>Acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para recibir información sobre el programa.</span>
         </label>
         <button class="btn" type="submit">Enviar solicitud</button>
         <p class="form-msg" id="formMsg">¡Gracias! Hemos recibido tu solicitud y te contactaremos pronto.</p>
@@ -513,7 +521,7 @@
       <p>+34 645 17 88 54</p>
     </div>
   </div>
-  <div class="wrap"><div class="copyright">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados.</div></div>
+  <div class="wrap"><div class="copyright">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados. · <a href="politica-privacidad.html">Política de privacidad</a></div></div>
 </footer>
 
 <script>

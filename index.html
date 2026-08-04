@@ -9,6 +9,7 @@
 <link rel="icon" type="image/png" sizes="256x256" href="favicon-256.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="theme-color" content="#1c355e">
+<script>document.documentElement.classList.add('js')</script>
 <style>
   :root{
     --ink:#1c355e;         /* QRM Institute navy — títulos y texto principal */
@@ -219,6 +220,17 @@
     .row2{grid-template-columns:1fr}
     section{padding:56px 0}
     .hero{padding:56px 0 40px}
+  }
+
+  /* ---------- Aparición progresiva al hacer scroll ---------- */
+  @media (prefers-reduced-motion: no-preference){
+    html.js :is(.hero .eyebrow,.hero h1,.hero .lead,.hero-cta,.hero .hero-note,.fact,.section-head,.q,.obj,.aud .item,.mod,.method-photo,.method .m,.prof,.card,.cta-band){
+      opacity:0;transform:translateY(28px);
+      transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    html.js :is(.hero .eyebrow,.hero h1,.hero .lead,.hero-cta,.hero .hero-note,.fact,.section-head,.q,.obj,.aud .item,.mod,.method-photo,.method .m,.prof,.card,.cta-band).r-in{
+      opacity:1;transform:none;
+    }
   }
 </style>
 </head>
@@ -551,6 +563,26 @@
     msg.style.display = 'block';
     btn.disabled = false; btn.textContent = btnText;
   });
+
+  // Aparición progresiva de los elementos al hacer scroll
+  (function(){
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sel = '.hero .eyebrow,.hero h1,.hero .lead,.hero-cta,.hero .hero-note,.fact,.section-head,.q,.obj,.aud .item,.mod,.method-photo,.method .m,.prof,.card,.cta-band';
+    var els = [].slice.call(document.querySelectorAll(sel));
+    // Escalonado: retrasa un poco cada elemento según su posición dentro del mismo grupo
+    els.forEach(function(el){
+      var sibs = [].filter.call(el.parentNode.children, function(c){ return els.indexOf(c) > -1; });
+      var idx = sibs.indexOf(el);
+      if (idx > 0) el.style.transitionDelay = Math.min(idx, 6) * 70 + 'ms';
+    });
+    if (!('IntersectionObserver' in window)) { els.forEach(function(el){ el.classList.add('r-in'); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('r-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
 </script>
 
 </body>

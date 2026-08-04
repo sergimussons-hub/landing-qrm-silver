@@ -582,6 +582,19 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     els.forEach(function(el){ io.observe(el); });
+
+    // Red de seguridad: revela lo que ya esté en pantalla tras saltos de ancla
+    // o cargas con scroll restaurado, para que nada quede invisible.
+    function revelarVisibles(){
+      els.forEach(function(el){
+        if (el.classList.contains('r-in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < innerHeight && r.bottom > 0) { el.classList.add('r-in'); io.unobserve(el); }
+      });
+    }
+    addEventListener('load', revelarVisibles);
+    addEventListener('hashchange', function(){ setTimeout(revelarVisibles, 400); });
+    setTimeout(revelarVisibles, 1200);
   })();
 </script>
 

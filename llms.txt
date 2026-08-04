@@ -1,0 +1,60 @@
+# QRM Silver Certificate — QRM Institute Spain
+
+> Programa de certificación oficial en Quick Response Manufacturing (QRM) impartido por QRM Institute Spain (Instituto de Agilidad QRM, S.L.). Enseña a reducir los plazos de entrega y a transformar una organización tradicional centrada en los costes en una organización ágil de células QRM.
+
+## Datos del programa
+
+- **Nombre**: QRM Silver Certificate (Quick Response Manufacturing Silver Training Program)
+- **Certificación**: Silver Certificate® emitido por QRM Institute
+- **Formato**: Semipresencial (módulos 1 a 4 online; módulo 5 presencial en Barcelona)
+- **Duración**: 90 horas
+- **Fechas**: del 20 de octubre al 21 de diciembre de 2026
+- **Precio**: 2.475 € (incluye la emisión del certificado con dos convocatorias al examen)
+- **Bonificación**: parcialmente bonificable a través de FUNDAE
+- **Idioma**: español
+- **Incluye**: el libro «La producción es cuestión de tiempo», de Rajan Suri
+
+## A quién va dirigido
+
+- Directores/as o responsables de área
+- Profesionales de las operaciones industriales que buscan ampliar su visión
+- Responsables de ingeniería o industrialización
+- Consultores/as en operaciones industriales
+
+## Qué se aprende
+
+- La hoja de ruta de implementación de un proyecto QRM y sus 4 principios fundacionales
+- Análisis del Manufacturing Critical-path Time (MCT) para medir la capacidad de reacción de los procesos
+- Las leyes de la dinámica de sistemas: relación entre utilización, variabilidad, colas y lead time
+- Diseño de células QRM en planta y en oficinas (Q-ROCs), y equipos autogestionados
+- Definición del Focused Target Market Segment (FTMS)
+- Liderazgo de respuesta rápida y gestión del cambio
+
+## Plan de estudios
+
+1. **Módulo 1 (online, inicio 20/10)** — La importancia clave del tiempo en el QRM: estrategia y cultura empresarial, el poder del tiempo y caso MCT.
+2. **Módulo 2 (online, inicio 03/11)** — Organización de personas y procesos para la velocidad: estructura organizacional y dinámica de sistemas.
+3. **Módulo 3 (online, inicio 17/11)** — Aplicación a toda la empresa y puesta en marcha del QRM: extensión a ventas, compras, desarrollo de producto, ERP y costes.
+4. **Módulo 4 (online, inicio 01/12)** — Liderazgo y creación de equipos en QRM: cultura Agile, equipos y liderazgo.
+5. **Módulo 5 (presencial en Barcelona, 18 y 19 de diciembre)** — QRM Workshops: resolución de un caso real e inicio del cambio.
+
+Certificación: cuestionario el 19 de diciembre y entrega del caso práctico el 8 de enero de 2027.
+
+## Claustro docente
+
+- **Sergi Mussons** — Director de QRM Institute Spain. Especialista en organizaciones ágiles mediante QRM, Agile y Management 3.0.
+- **Pablo Rodríguez** — Consultor y formador. Experto en Agile, QRM, Lean y Transformación Digital.
+- **Txus Baquero** — Consultor y formador. Experto en Quick Response Manufacturing y dirección de empresas.
+- **Xesco Vilches** — Consultor y formador con 30 años de experiencia. Experto en Lean y QRM.
+
+## Contacto
+
+- Web: https://silver.qrminstitute.es/
+- Email: info@qrminstitute.com
+- Teléfono: +34 93 249 71 38 · Móvil: +34 629 87 92 17
+- Dirección: Carrer Historiador Ramón d'Abadal i de Vinyals, 5 · 08500 Vic (Barcelona), España
+
+## Enlaces
+
+- [Landing del programa](https://silver.qrminstitute.es/)
+- [Política de privacidad](https://silver.qrminstitute.es/politica-privacidad.html)

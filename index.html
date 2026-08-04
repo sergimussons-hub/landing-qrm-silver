@@ -718,8 +718,8 @@
         </ul>
       </div>
 
-      <form id="contactForm" action="https://formspree.io/f/mgoggdld" method="POST">
-        <input type="hidden" name="_subject" value="Nueva solicitud · QRM Silver Certificate">
+      <form id="contactForm" action="/api/contacto" method="POST">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="row2">
           <div class="field">
             <label for="nombre">Nombre y apellidos *</label>
@@ -782,7 +782,8 @@
 </footer>
 
 <script>
-  // Envío del formulario vía fetch a Formspree (sin recargar la página)
+  // Envío del formulario sin recargar la página. La solicitud va a nuestra
+  // propia función, que crea el lead en Odoo.
   const form = document.getElementById('contactForm');
   const msg = document.getElementById('formMsg');
   const btn = form.querySelector('button[type="submit"]');
@@ -791,15 +792,23 @@
     const btnText = btn.textContent;
     btn.disabled = true; btn.textContent = 'Enviando…';
     msg.style.display = 'none';
+
+    const datos = Object.fromEntries(new FormData(form).entries());
+
     try{
-      const res = await fetch(form.action, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}});
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(datos)
+      });
       if(res.ok){
         form.reset();
         msg.style.color = '#7bd88f';
         msg.textContent = '¡Gracias! Hemos recibido tu solicitud y te contactaremos pronto.';
       } else {
+        const data = await res.json().catch(function(){ return {}; });
         msg.style.color = '#f7b955';
-        msg.textContent = 'No se pudo enviar. Escríbenos a info@qrminstitute.com o inténtalo de nuevo.';
+        msg.textContent = data.error || 'No se pudo enviar. Escríbenos a info@qrminstitute.com.';
       }
     }catch(err){
       msg.style.color = '#f7b955';

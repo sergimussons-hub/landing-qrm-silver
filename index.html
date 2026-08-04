@@ -87,12 +87,14 @@
   .hero-note{font-size:.9rem;color:var(--muted);margin-top:20px}
 
   .facts{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:56px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+    border:2px solid var(--line);border-radius:18px;overflow:hidden;margin-top:56px;
+    box-shadow:0 20px 46px -24px rgba(28,53,94,.38);
   }
-  .fact{background:var(--bg);padding:24px 22px}
-  .fact .k{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;margin-bottom:6px}
-  .fact .v{font-size:1.15rem;font-weight:700;color:var(--ink);letter-spacing:-0.01em}
+  .fact{background:var(--bg);padding:26px 24px;transition:background .2s ease}
+  .fact:hover{background:var(--bg-soft)}
+  .fact .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:800;margin-bottom:8px}
+  .fact .v{font-size:1.22rem;font-weight:800;color:var(--ink);letter-spacing:-0.015em}
 
   /* ---------- Sections ---------- */
   section{padding:76px 0}
@@ -100,14 +102,31 @@
   .section-head p{margin-top:14px;font-size:1.08rem}
   .soft{background:var(--bg-soft)}
 
-  /* Questions */
-  .questions{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  /* Questions (acordeón) */
+  .questions{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-items:start}
   .q{
     background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px 26px;font-size:1.12rem;font-weight:600;color:var(--ink);
+    overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease;
+  }
+  .q[open]{box-shadow:0 10px 34px rgba(28,53,94,.09);border-color:#dfe2e6}
+  .q summary{
+    list-style:none;cursor:pointer;padding:24px 26px;
+    font-size:1.08rem;font-weight:600;color:var(--ink);
     display:flex;gap:14px;align-items:flex-start;
   }
-  .q .mark{color:var(--accent);font-weight:800;font-size:1.3rem;line-height:1.2}
+  .q summary::-webkit-details-marker{display:none}
+  .q summary:hover{color:var(--accent-ink)}
+  .q .mark{color:var(--accent);font-weight:800;font-size:1.3rem;line-height:1.2;flex:0 0 auto}
+  .chev{
+    margin-left:auto;flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+    background:rgba(255,134,4,.12);color:var(--accent);display:grid;place-items:center;
+    font-size:.95rem;font-weight:800;line-height:1;transition:transform .25s ease;
+  }
+  .q .chev{margin-top:2px}
+  details[open] > summary .chev{transform:rotate(45deg)}
+  .q-a{padding:0 26px 24px 54px;color:var(--ink-soft);font-size:.97rem;line-height:1.72}
+  .q[open] .q-a{animation:qOpen .3s ease}
+  @keyframes qOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
   /* Objetivos list */
   .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 40px}
@@ -119,8 +138,20 @@
   .obj p{color:var(--ink);font-weight:500}
 
   /* Audience */
-  .aud{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .aud .item{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:20px 22px;font-weight:600}
+  .aud{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start}
+  .aud .item{
+    background:var(--bg);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;transition:box-shadow .2s ease,border-color .2s ease;
+  }
+  .aud .item[open]{box-shadow:0 10px 34px rgba(28,53,94,.09);border-color:#dfe2e6}
+  .aud .item summary{
+    list-style:none;cursor:pointer;padding:20px 22px;font-weight:600;color:var(--ink);
+    display:flex;gap:14px;align-items:center;
+  }
+  .aud .item summary::-webkit-details-marker{display:none}
+  .aud .item summary:hover{color:var(--accent-ink)}
+  .aud-a{padding:0 22px 20px;color:var(--ink-soft);font-size:.95rem;line-height:1.72}
+  .aud .item[open] .aud-a{animation:qOpen .3s ease}
   .soft .aud .item{background:#fff}
 
   /* Modules */
@@ -130,8 +161,12 @@
     padding:26px 28px;transition:box-shadow .2s ease,border-color .2s ease;
   }
   .mod:hover{box-shadow:0 8px 30px rgba(20,22,25,.06);border-color:#dfe2e6}
-  .mod-top{display:flex;justify-content:space-between;gap:20px;align-items:baseline;flex-wrap:wrap}
+  .mod-top{display:flex;justify-content:space-between;gap:14px 20px;align-items:center;flex-wrap:wrap}
+  .mod-left{display:inline-flex;align-items:center;gap:11px;flex-wrap:wrap}
   .mod-n{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  .tag{font-size:.67rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border-radius:100px;line-height:1.15;white-space:nowrap}
+  .tag-online{color:var(--navy);background:rgba(28,53,94,.09)}
+  .tag-presencial{color:#fff;background:var(--accent);box-shadow:0 4px 12px rgba(255,134,4,.32)}
   .mod h3{margin:6px 0 10px}
   .mod .start{font-size:.85rem;color:var(--muted);font-weight:600;white-space:nowrap}
   .mod p{font-size:.98rem}
@@ -150,29 +185,32 @@
 
   /* Faculty */
   .faculty{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .prof{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .prof{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;gap:20px;align-items:flex-start}
   .soft .prof{background:#fff}
   .prof .avatar{
-    width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#f7a15a);
-    color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.05rem;margin-bottom:16px;letter-spacing:0;
+    width:84px;height:84px;flex:0 0 84px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#f7a15a);
+    color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.05rem;letter-spacing:0;
     overflow:hidden;box-shadow:0 0 0 3px #fff,0 6px 16px rgba(28,53,94,.18);
   }
+  .prof-body{min-width:0}
   .prof .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:grayscale(100%)}
   .prof h3{font-size:1.08rem;margin-bottom:4px}
   .prof .role{font-size:.82rem;color:var(--accent);font-weight:600;margin-bottom:10px}
   .prof p{font-size:.92rem}
 
   /* Highlight band: book + cert + price */
-  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
-  .card .ico{font-size:1.6rem;margin-bottom:14px}
-  .card .book-img{height:150px;width:auto;margin-bottom:16px;display:block;filter:drop-shadow(0 10px 20px rgba(28,53,94,.18))}
-  .card .badge-img{height:120px;width:auto;margin-bottom:16px;display:block}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px 32px;text-align:center;display:flex;flex-direction:column}
+  .card-media{height:200px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .card .book-img{max-height:200px;width:auto;filter:drop-shadow(0 16px 28px rgba(28,53,94,.3))}
+  .card .badge-img{max-height:168px;width:auto}
   .card h3{margin-bottom:8px}
   .card p{font-size:.95rem}
-  .price-v{font-size:2.6rem;font-weight:800;letter-spacing:-0.03em;color:var(--ink);margin:6px 0}
+  .price-v{font-size:3.2rem;font-weight:800;letter-spacing:-0.03em;color:var(--ink);line-height:1}
   .price-v small{font-size:1rem;font-weight:600;color:var(--muted)}
-  .badge{display:inline-block;font-size:.75rem;font-weight:700;color:var(--accent-ink);background:rgba(238,108,31,.1);padding:4px 12px;border-radius:100px;margin-top:10px}
+  .badge{display:inline-block;align-self:center;font-size:.75rem;font-weight:700;color:var(--accent-ink);background:rgba(255,134,4,.1);padding:5px 13px;border-radius:100px;margin-top:14px}
+  .btn-card{margin-top:18px;font-size:.92rem;padding:12px 22px;align-self:center}
+  .card p.incluye{color:var(--ink);font-size:.92rem;margin:10px 0 12px;padding:12px 14px;background:var(--bg-soft);border-radius:10px}
 
   /* CTA / Form */
   .cta-band{background:var(--navy);color:#fff;border-radius:22px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;box-shadow:0 30px 80px -30px rgba(28,53,94,.5)}
@@ -279,12 +317,25 @@
     <div class="section-head">
       <div class="eyebrow">¿Te suena?</div>
       <h2>Esta formación responde a las preguntas que te quitan el sueño</h2>
+      <p>Pulsa cada pregunta para ver la respuesta.</p>
     </div>
     <div class="questions">
-      <div class="q"><span class="mark">?</span> ¿Puede mi empresa entregar los pedidos más rápido a clientes que piden productos personalizados?</div>
-      <div class="q"><span class="mark">?</span> ¿Ser rápido quiere decir perder beneficios?</div>
-      <div class="q"><span class="mark">?</span> ¿Para ser rápido tendré que comprar más maquinaria y contratar más gente?</div>
-      <div class="q"><span class="mark">?</span> ¿Debo tener más stocks para servir más rápido?</div>
+      <details class="q">
+        <summary><span class="mark">?</span><span>¿Puede mi empresa entregar los pedidos más rápido a clientes que piden productos personalizados?</span><span class="chev">+</span></summary>
+        <div class="q-a">Sí, y es justamente el escenario para el que nació el QRM: alta variedad y producto a medida. La clave no es que las personas trabajen más deprisa, sino eliminar el <strong>espacio en blanco</strong>: todo ese tiempo en el que el pedido simplemente espera. Con el análisis del <strong>MCT</strong> (Manufacturing Critical-path Time) medimos el tiempo real de principio a fin y descubrimos dónde se esconde ese tiempo muerto, que suele ser la mayor parte del plazo total.</div>
+      </details>
+      <details class="q">
+        <summary><span class="mark">?</span><span>¿Ser rápido y ágil implica aumentar costes y perder margen?</span><span class="chev">+</span></summary>
+        <div class="q-a">Al contrario: es una de las grandes confusiones que aclara el QRM. Reducir el lead time elimina costes que la contabilidad tradicional no muestra —urgencias, reprocesos, horas extra, obsolescencia y stock inmovilizado— y que se pagan igualmente. El tiempo funciona como indicador maestro: cuando el plazo baja, la calidad y el margen suben con él.</div>
+      </details>
+      <details class="q">
+        <summary><span class="mark">?</span><span>¿Para ser rápido tendré que comprar más maquinaria y contratar más gente?</span><span class="chev">+</span></summary>
+        <div class="q-a">No necesariamente. La <strong>dinámica de sistemas</strong> demuestra que los plazos dependen del nivel de utilización y de la variabilidad, no solo de la capacidad: trabajar con los recursos al máximo dispara las colas y alarga las entregas. Reorganizando el flujo en <strong>células QRM</strong> se consiguen mejoras muy relevantes con los medios que ya tienes.</div>
+      </details>
+      <details class="q">
+        <summary><span class="mark">?</span><span>¿Debo tener más stocks para servir más rápido?</span><span class="chev">+</span></summary>
+        <div class="q-a">No. El stock es una manera cara de compensar un plazo de entrega largo y, cuando el producto es personalizado, ni siquiera sirve. QRM ataca la causa —la capacidad de respuesta del proceso— en lugar del síntoma, de modo que ese stock deja de ser necesario.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -317,12 +368,25 @@
     <div class="section-head">
       <div class="eyebrow">A quién va dirigido</div>
       <h2>Pensado para quien lidera la transformación industrial</h2>
+      <p>Pulsa tu perfil para ver por qué el QRM encaja contigo.</p>
     </div>
     <div class="aud">
-      <div class="item">Directores/as o responsables de área</div>
-      <div class="item">Profesionales de las operaciones industriales que buscan ampliar su visión</div>
-      <div class="item">Responsables de ingeniería o industrialización</div>
-      <div class="item">Consultores/as en operaciones industriales</div>
+      <details class="item">
+        <summary><span>Directores/as o responsables de área</span><span class="chev">+</span></summary>
+        <div class="aud-a">Si tu cuenta de resultados depende de cumplir plazos y de reaccionar a lo que pide el mercado, aquí encontrarás el marco para decidir con datos: cómo medir el tiempo real de tus procesos con el <strong>MCT</strong>, qué estructura organizativa lo acorta y cómo liderar la transformación sin bloquear a los equipos. Saldrás con una hoja de ruta aplicable a tu empresa.</div>
+      </details>
+      <details class="item">
+        <summary><span>Profesionales de las operaciones industriales que buscan ampliar su visión</span><span class="chev">+</span></summary>
+        <div class="aud-a">Si ya trabajas en planta o en procesos y quieres pasar de apagar fuegos a rediseñar el sistema, el QRM te da la explicación de fondo: por qué se forman las colas, qué relación hay entre la carga de trabajo y el plazo de entrega, y qué palancas reducen el lead time de verdad. Es el salto de la mejora puntual a la visión de conjunto.</div>
+      </details>
+      <details class="item">
+        <summary><span>Responsables de ingeniería o industrialización</span><span class="chev">+</span></summary>
+        <div class="aud-a">Si diseñas productos, procesos o líneas, buena parte del tiempo de entrega se decide en tu mesa. Aprenderás a analizar el <strong>MCT</strong> de principio a fin, a definir el <strong>Focused Target Market Segment</strong> y a crear células QRM —también en las oficinas técnicas, los <strong>Q-ROCs</strong>— para que el desarrollo y la industrialización dejen de ser el cuello de botella.</div>
+      </details>
+      <details class="item">
+        <summary><span>Consultores/as en operaciones industriales</span><span class="chev">+</span></summary>
+        <div class="aud-a">Si dominas Lean Manufacturing y la Teoría de las Restricciones (TOC) y eres consciente de que aún falta algo, el QRM cubre justamente ese hueco: aporta la estrategia sólida que hoy te falta cuando la variedad es alta y cada pedido es distinto, ahí donde los enfoques clásicos se quedan cortos. Además te da un marco propio y certificado con el que diferenciarte ante tus clientes.</div>
+      </details>
     </div>
   </div>
 </section>
@@ -336,34 +400,34 @@
     </div>
     <div class="modules">
       <div class="mod">
-        <div class="mod-top"><span class="mod-n">Módulo 1</span><span class="start">Inicio: 20/10</span></div>
+        <div class="mod-top"><span class="mod-left"><span class="mod-n">Módulo 1</span><span class="tag tag-online">Online</span></span><span class="start">Inicio: 20/10</span></div>
         <h3>La importancia clave del tiempo en el QRM</h3>
         <p>Estrategias operativas y comportamiento de la demanda para valorar la idoneidad del QRM. El Manufacturing Critical-path Time (MCT) como herramienta básica para analizar la capacidad de reacción de los procesos.</p>
         <div class="weeks"><span class="week">Sem. 1 · Estrategia y cultura empresarial</span><span class="week">Sem. 2 · El poder del tiempo y caso MCT</span></div>
       </div>
       <div class="mod">
-        <div class="mod-top"><span class="mod-n">Módulo 2</span><span class="start">Inicio: 03/11</span></div>
+        <div class="mod-top"><span class="mod-left"><span class="mod-n">Módulo 2</span><span class="tag tag-online">Online</span></span><span class="start">Inicio: 03/11</span></div>
         <h3>Organización de personas y procesos para la velocidad</h3>
         <p>Cómo se crean las células QRM de planta, las de oficinas (Q-ROCs) y los equipos autogestionados. Dinámica de sistemas: la relación entre sobrecapacidad y lead time, y las acciones que lo reducen.</p>
         <div class="weeks"><span class="week">Sem. 3 · Estructura organizacional</span><span class="week">Sem. 4 · Dinámica de sistemas</span></div>
       </div>
       <div class="mod">
-        <div class="mod-top"><span class="mod-n">Módulo 3</span><span class="start">Inicio: 17/11</span></div>
+        <div class="mod-top"><span class="mod-left"><span class="mod-n">Módulo 3</span><span class="tag tag-online">Online</span></span><span class="start">Inicio: 17/11</span></div>
         <h3>Aplicación a toda la empresa y puesta en marcha del QRM</h3>
         <p>Extender el enfoque a tiempo a ventas, compras, desarrollo de productos, ERP y costes. Pasos de una implementación QRM con la herramienta FTMS y la definición del Focused Target Market Segment.</p>
         <div class="weeks"><span class="week">Sem. 5 · Aplicación a toda la empresa</span><span class="week">Sem. 6 · Empezar con el QRM</span></div>
       </div>
       <div class="mod">
-        <div class="mod-top"><span class="mod-n">Módulo 4</span><span class="start">Inicio: 01/12</span></div>
+        <div class="mod-top"><span class="mod-left"><span class="mod-n">Módulo 4</span><span class="tag tag-online">Online</span></span><span class="start">Inicio: 01/12</span></div>
         <h3>Liderazgo y creación de equipos en QRM</h3>
         <p>La cultura empresarial que favorece la implicación: dominio, autogestión y finalidad. El cambio de rol de directivos y líderes, y un plan por fases para crear equipos y un liderazgo de apoyo con la herramienta Sharpa®.</p>
         <div class="weeks"><span class="week">Sem. 7 · Cultura Agile y QRM</span><span class="week">Sem. 8 · Equipos y liderazgo</span></div>
       </div>
       <div class="mod">
-        <div class="mod-top"><span class="mod-n">Módulo 5</span><span class="start">18 y 19 de diciembre</span></div>
+        <div class="mod-top"><span class="mod-left"><span class="mod-n">Módulo 5</span><span class="tag tag-presencial">Presencial · Barcelona</span></span><span class="start">18 y 19 de diciembre</span></div>
         <h3>QRM Workshops · Experimentando el cambio</h3>
         <p>Resolución de un caso real mediante el marco de análisis QRM y dinámicas para mapear los obstáculos a la implementación, entender su origen y elaborar estrategias para iniciar el cambio hacia QRM.</p>
-        <div class="weeks"><span class="week">Presencial · Resolución del caso QRM</span><span class="week">Iniciando el cambio</span></div>
+        <div class="weeks"><span class="week">Resolución del caso QRM</span><span class="week">Iniciando el cambio</span></div>
       </div>
     </div>
   </div>
@@ -402,27 +466,35 @@
     <div class="faculty">
       <div class="prof">
         <div class="avatar"><img src="prof-sergi.jpg" alt="Sergi Mussons"></div>
-        <h3>Sergi Mussons</h3>
-        <div class="role">Director de QRM Institute Spain</div>
-        <p>Especialista en la creación de organizaciones ágiles a través de metodologías QRM, Agile y Management 3.0.</p>
+        <div class="prof-body">
+          <h3>Sergi Mussons</h3>
+          <div class="role">Director de QRM Institute Spain</div>
+          <p>Especialista en la creación de organizaciones ágiles a través de metodologías QRM, Agile y Management 3.0.</p>
+        </div>
       </div>
       <div class="prof">
         <div class="avatar"><img src="prof-pablo.jpg" alt="Pablo Rodríguez"></div>
-        <h3>Pablo Rodríguez</h3>
-        <div class="role">Formador y consultor</div>
-        <p>Experto en estrategias Agile, QRM, Lean y Transformación Digital. Certified Scrum Master y Agile Coach.</p>
+        <div class="prof-body">
+          <h3>Pablo Rodríguez</h3>
+          <div class="role">Consultor y formador</div>
+          <p>Experto en estrategias Agile, QRM, Lean y Transformación Digital. Certified Scrum Master y Agile Coach.</p>
+        </div>
       </div>
       <div class="prof">
         <div class="avatar"><img src="prof-txus.jpg" alt="Txus Baquero"></div>
-        <h3>Txus Baquero</h3>
-        <div class="role">Consultor y formador</div>
-        <p>Experto en Quick Response Manufacturing, metodologías ágiles y dirección de empresas. Focalizado en las personas y la estrategia.</p>
+        <div class="prof-body">
+          <h3>Txus Baquero</h3>
+          <div class="role">Consultor y formador</div>
+          <p>Experto en Quick Response Manufacturing, metodologías ágiles y dirección de empresas. Focalizado en las personas y la estrategia.</p>
+        </div>
       </div>
       <div class="prof">
         <div class="avatar"><img src="prof-xesco.jpg" alt="Xesco Vilches"></div>
-        <h3>Xesco Vilches</h3>
-        <div class="role">Consultor y formador</div>
-        <p>30 años de experiencia en múltiples sectores. Experto en Lean Manufacturing y Quick Response Manufacturing.</p>
+        <div class="prof-body">
+          <h3>Xesco Vilches</h3>
+          <div class="role">Consultor y formador</div>
+          <p>30 años de experiencia en múltiples sectores. Experto en Lean Manufacturing y Quick Response Manufacturing.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -437,20 +509,21 @@
     </div>
     <div class="cards3">
       <div class="card">
-        <img class="book-img" src="libro-produccion-tiempo.jpg" alt="Libro «La producción es cuestión de tiempo», de Rajan Suri">
+        <div class="card-media"><img class="book-img" src="libro-produccion-tiempo.png" alt="Libro «La producción es cuestión de tiempo», de Rajan Suri"></div>
         <h3>Incluye el libro</h3>
         <p><em>«La producción es cuestión de tiempo»</em>, de Rajan Suri, creador de la metodología QRM.</p>
       </div>
       <div class="card">
-        <img class="badge-img" src="badge-qrm-silver.png" alt="Sello Silver Certification del QRM Institute">
+        <div class="card-media"><img class="badge-img" src="badge-qrm-silver.png" alt="Sello Silver Certification del QRM Institute"></div>
         <h3>Silver Certificate®</h3>
         <p>Posibilidad de aprobar el examen final (opcional) y recibir la insignia y el certificado oficial del QRM Institute. Entrega del caso: 8 de enero de 2027.</p>
       </div>
       <div class="card">
-        <div class="ico">💶</div>
+        <div class="card-media"><div class="price-v">2.475€</div></div>
         <h3>Importe de la formación</h3>
-        <div class="price-v">2.475€</div>
+        <p class="incluye">Incluye la emisión del certificado QRM Silver Certificate® con <strong>dos convocatorias</strong> al examen.</p>
         <p>Consulta descuentos, bonificaciones y ayudas.</p>
+        <a class="btn btn-card" href="#contacto">Consultar ayudas y descuentos</a>
         <span class="badge">Bonificable parcialmente vía FUNDAE</span>
       </div>
     </div>
@@ -470,7 +543,7 @@
         <ul class="cta-info">
           <li><span class="ic">✉</span><span><b>info@qrminstitute.com</b></span></li>
           <li><span class="ic">☎</span><span>+34 93 249 71 38</span></li>
-          <li><span class="ic">✆</span><span>+34 645 17 88 54</span></li>
+          <li><span class="ic">✆</span><span>+34 629 87 92 17</span></li>
           <li><span class="ic">◷</span><span>Del 20 de octubre al 21 de diciembre de 2026 · 90h</span></li>
         </ul>
       </div>
@@ -532,7 +605,7 @@
       <p>QRM Institute Spain</p>
       <p><a href="mailto:info@qrminstitute.com">info@qrminstitute.com</a></p>
       <p>+34 93 249 71 38</p>
-      <p>+34 645 17 88 54</p>
+      <p>+34 629 87 92 17</p>
     </div>
   </div>
   <div class="wrap"><div class="copyright">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados. · <a href="politica-privacidad.html">Política de privacidad</a></div></div>

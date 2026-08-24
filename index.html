@@ -809,6 +809,11 @@
         form.reset();
         msg.style.color = '#7bd88f';
         msg.textContent = '¡Gracias! Hemos recibido tu solicitud y te contactaremos pronto.';
+        // Enviado y bien: el botón se queda apagado. Volver a encenderlo deja
+        // mandar la misma solicitud otra vez, que es lo que se venía a evitar.
+        msg.style.display = 'block';
+        btn.textContent = 'Solicitud enviada';
+        return;
       } else {
         const data = await res.json().catch(function(){ return {}; });
         msg.style.color = '#f7b955';

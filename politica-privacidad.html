@@ -45,6 +45,20 @@
   footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted);font-size:.85rem}
   @media (max-width:640px){ .brand span{display:none} h1{font-size:1.7rem} }
 </style>
+<!-- Consentimiento de cookies (Consent Mode v2) + Google Tag Manager, compartido con qrminstitute.es -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  (function(){
+    var m = document.cookie.match(/(?:^|; )qrmi_consent=(granted|denied)/);
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: (m && m[1] === 'granted') ? 'granted' : 'denied',
+      wait_for_update: 500
+    });
+  })();
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2VZL3LS');</script>
 </head>
 <body>
 
@@ -69,7 +83,7 @@
       <p><strong>NIF:</strong> B23972235</p>
       <p><strong>Domicilio:</strong> Carrer Historiador Ramón d'Abadal i de Vinyals, 5 · 08500 Vic (Barcelona)</p>
       <p><strong>Correo electrónico:</strong> <a href="mailto:info@qrminstitute.com">info@qrminstitute.com</a></p>
-      <p><strong>Teléfono:</strong> +34 93 249 71 38</p>
+      <p><strong>Teléfono:</strong> +34 629 87 92 17</p>
     </div>
 
     <h2>2. ¿Qué datos recogemos?</h2>
@@ -81,6 +95,7 @@
       <li>Atender tu solicitud de información sobre el programa QRM Silver Certificate y otras formaciones.</li>
       <li>Ponernos en contacto contigo para resolver tus dudas y, en su caso, gestionar tu inscripción.</li>
       <li>Remitirte información relacionada con el programa por el que te has interesado.</li>
+      <li>Si lo marcas expresamente, enviarte la newsletter mensual de QRM Institute. Puedes darte de baja en cualquier momento desde el enlace de cada envío.</li>
     </ul>
 
     <h2>4. ¿Cuál es la legitimación para el tratamiento?</h2>
@@ -90,7 +105,7 @@
     <p>Conservaremos tus datos mientras mantengamos una relación o interés mutuo y no solicites su supresión. Una vez finalizada la relación, se conservarán bloqueados durante los plazos legalmente exigibles y, transcurridos estos, serán eliminados.</p>
 
     <h2>6. ¿A qué destinatarios se comunican tus datos?</h2>
-    <p>No se cederán datos a terceros, salvo obligación legal. Para la gestión técnica del formulario utilizamos el proveedor <strong>Formspree</strong>, que actúa como encargado del tratamiento y recibe los datos únicamente para hacernos llegar tu solicitud. Este proveedor puede tratar datos fuera del Espacio Económico Europeo, aplicando las garantías previstas por el RGPD.</p>
+    <p>No se cederán datos a terceros, salvo obligación legal. Para la gestión técnica del formulario y de nuestra relación contigo utilizamos proveedores que actúan como encargados del tratamiento: <strong>Vercel</strong> (alojamiento de la web), <strong>Resend</strong> (envío de los avisos del formulario) y <strong>Odoo</strong> (CRM y newsletter). Algunos pueden tratar datos fuera del Espacio Económico Europeo, aplicando las garantías previstas por el RGPD.</p>
 
     <h2>7. ¿Cuáles son tus derechos?</h2>
     <p>Puedes ejercer los siguientes derechos dirigiéndote a <a href="mailto:info@qrminstitute.com">info@qrminstitute.com</a>, indicando el derecho que deseas ejercer:</p>
@@ -105,14 +120,48 @@
     </ul>
     <p>Asimismo, si consideras que el tratamiento de tus datos no se ajusta a la normativa, tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
 
-    <h2>8. Seguridad</h2>
+    <h2 id="cookies">8. Cookies</h2>
+    <p>Esta web solo utiliza cookies de analítica (Google Analytics, a través de Google Tag Manager) si las aceptas en el aviso de cookies. Nos sirven para saber qué contenidos resultan útiles. Puedes cambiar tu elección en cualquier momento desde el enlace «Cookies» del pie de página.</p>
+
+    <h2>9. Seguridad</h2>
     <p>Aplicamos las medidas técnicas y organizativas apropiadas para garantizar la seguridad de tus datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado.</p>
   </div>
 </main>
 
 <footer>
-  <div class="wrap">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados.</div>
+  <div class="wrap">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados. · <a href="#" onclick="qrmiCookies();return false" style="color:inherit">Cookies</a></div>
 </footer>
 
+<!-- Aviso de cookies: la elección se guarda para todo *.qrminstitute.es -->
+<div id="qrmi-cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies de analítica para saber qué contenidos te resultan útiles. Solo se activan si las aceptas. <a href="#cookies">Más información</a></p>
+  <div class="qrmi-cookies__btns">
+    <button type="button" data-c="denied">Rechazar</button>
+    <button type="button" data-c="granted" class="ok">Aceptar</button>
+  </div>
+</div>
+<style>
+  #qrmi-cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;background:#1c355e;color:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 30px rgba(0,0,0,.25);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  #qrmi-cookies[hidden]{display:none}
+  #qrmi-cookies p{margin:0;flex:1 1 260px}
+  #qrmi-cookies a{color:#fff;text-decoration:underline}
+  .qrmi-cookies__btns{display:flex;gap:8px}
+  #qrmi-cookies button{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:transparent;color:#fff;font-weight:600;cursor:pointer}
+  #qrmi-cookies button.ok{background:#f39200;border-color:#f39200}
+</style>
+<script>
+  (function(){
+    var box = document.getElementById('qrmi-cookies');
+    var dom = /qrminstitute\.es$/.test(location.hostname) ? '; domain=.qrminstitute.es' : '';
+    function guardar(v){
+      document.cookie = 'qrmi_consent=' + v + '; max-age=' + (180*24*3600) + '; path=/' + dom + '; SameSite=Lax; Secure';
+      gtag('consent', 'update', { analytics_storage: v });
+      box.hidden = true;
+    }
+    if (!/(?:^|; )qrmi_consent=/.test(document.cookie)) box.hidden = false;
+    box.addEventListener('click', function(e){ var v = e.target.getAttribute('data-c'); if (v) guardar(v); });
+    window.qrmiCookies = function(){ box.hidden = false; };
+  })();
+</script>
 </body>
 </html>

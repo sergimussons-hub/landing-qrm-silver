@@ -36,14 +36,18 @@
   "@graph": [
     {
       "@type": ["Organization", "EducationalOrganization"],
-      "@id": "https://silver.qrminstitute.es/#organizacion",
+      "@id": "https://qrminstitute.es/#organization",
       "name": "QRM Institute Spain",
       "legalName": "Instituto de Agilidad QRM, S.L.",
-      "url": "https://silver.qrminstitute.es/",
+      "url": "https://qrminstitute.es/",
       "logo": "https://silver.qrminstitute.es/logo-qrm.png",
       "image": "https://silver.qrminstitute.es/og-image.png",
       "email": "info@qrminstitute.com",
-      "telephone": "+34932497138",
+      "telephone": "+34629879217",
+      "sameAs": [
+        "https://www.linkedin.com/school/qrminstitutespain/",
+        "https://www.youtube.com/@QRMInstitute"
+      ],
       "vatID": "B23972235",
       "address": {
         "@type": "PostalAddress",
@@ -60,7 +64,7 @@
       "url": "https://silver.qrminstitute.es/",
       "name": "QRM Silver Certificate",
       "inLanguage": "es-ES",
-      "publisher": { "@id": "https://silver.qrminstitute.es/#organizacion" }
+      "publisher": { "@id": "https://qrminstitute.es/#organization" }
     },
     {
       "@type": "Course",
@@ -85,7 +89,7 @@
         "@type": "EducationalAudience",
         "educationalRole": "Directores de área, profesionales de operaciones industriales, responsables de ingeniería o industrialización y consultores en operaciones industriales"
       },
-      "provider": { "@id": "https://silver.qrminstitute.es/#organizacion" },
+      "provider": { "@id": "https://qrminstitute.es/#organization" },
       "offers": {
         "@type": "Offer",
         "price": "2475",
@@ -128,7 +132,7 @@
         "@type": "EducationalOccupationalCredential",
         "name": "QRM Silver Certificate",
         "credentialCategory": "certificate",
-        "recognizedBy": { "@id": "https://silver.qrminstitute.es/#organizacion" }
+        "recognizedBy": { "@id": "https://qrminstitute.es/#organization" }
       },
       "syllabusSections": [
         { "@type": "Syllabus", "name": "Módulo 1 · La importancia clave del tiempo en el QRM", "description": "Estrategias operativas, comportamiento de la demanda y el Manufacturing Critical-path Time (MCT) como herramienta de análisis." },
@@ -445,6 +449,20 @@
     }
   }
 </style>
+<!-- Consentimiento de cookies (Consent Mode v2) + Google Tag Manager, compartido con qrminstitute.es -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  (function(){
+    var m = document.cookie.match(/(?:^|; )qrmi_consent=(granted|denied)/);
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: (m && m[1] === 'granted') ? 'granted' : 'denied',
+      wait_for_update: 500
+    });
+  })();
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W2VZL3LS');</script>
 </head>
 <body>
 
@@ -715,8 +733,7 @@
         </div>
         <ul class="cta-info">
           <li><span class="ic">✉</span><span><b>info@qrminstitute.com</b></span></li>
-          <li><span class="ic">☎</span><span>+34 93 249 71 38</span></li>
-          <li><span class="ic">✆</span><span>+34 629 87 92 17</span></li>
+          <li><span class="ic">✆</span><span><a href="tel:+34629879217" style="color:inherit">+34 629 87 92 17</a></span></li>
           <li><span class="ic">◷</span><span>Del 20 de octubre al 21 de diciembre de 2026 · 90h</span></li>
         </ul>
       </div>
@@ -751,6 +768,10 @@
           <input type="checkbox" name="consentimiento" required>
           <span>Acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y el tratamiento de mis datos para recibir información sobre el programa.</span>
         </label>
+        <label class="consent">
+          <input type="checkbox" name="newsletter" value="1">
+          <span>Quiero recibir también la newsletter mensual de QRM Institute (opcional).</span>
+        </label>
         <button class="btn" type="submit">Enviar solicitud</button>
         <p class="form-msg" id="formMsg">¡Gracias! Hemos recibido tu solicitud y te contactaremos pronto.</p>
       </form>
@@ -769,6 +790,8 @@
     <div class="foot-col">
       <h4>Programa</h4>
       <p><a href="https://qrminstitute.es"><strong>Ir a qrminstitute.es</strong> ↗</a></p>
+      <p><a href="https://qrminstitute.es/quick-response-manufacturing/">Qué es QRM</a></p>
+      <p><a href="https://qrminstitute.es/blog/">Blog MomentoAgile</a></p>
       <p><a href="#programa">Objetivos</a></p>
       <p><a href="#plan">Plan de estudios</a></p>
       <p><a href="#claustro">Claustro docente</a></p>
@@ -778,11 +801,10 @@
       <h4>Contacto</h4>
       <p>QRM Institute Spain</p>
       <p><a href="mailto:info@qrminstitute.com">info@qrminstitute.com</a></p>
-      <p>+34 93 249 71 38</p>
-      <p>+34 629 87 92 17</p>
+      <p><a href="tel:+34629879217">+34 629 87 92 17</a></p>
     </div>
   </div>
-  <div class="wrap"><div class="copyright">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados. · <a href="politica-privacidad.html">Política de privacidad</a></div></div>
+  <div class="wrap"><div class="copyright">© 2026 QRM Institute · Edvance Business School. Todos los derechos reservados. · <a href="politica-privacidad.html">Política de privacidad</a> · <a href="#" onclick="qrmiCookies();return false">Cookies</a></div></div>
 </footer>
 
 <script>
@@ -861,5 +883,36 @@
   })();
 </script>
 
+<!-- Aviso de cookies: la elección se guarda para todo *.qrminstitute.es -->
+<div id="qrmi-cookies" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+  <p>Usamos cookies de analítica para saber qué contenidos te resultan útiles. Solo se activan si las aceptas. <a href="politica-privacidad.html#cookies">Más información</a></p>
+  <div class="qrmi-cookies__btns">
+    <button type="button" data-c="denied">Rechazar</button>
+    <button type="button" data-c="granted" class="ok">Aceptar</button>
+  </div>
+</div>
+<style>
+  #qrmi-cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;background:#1c355e;color:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 10px 30px rgba(0,0,0,.25);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  #qrmi-cookies[hidden]{display:none}
+  #qrmi-cookies p{margin:0;flex:1 1 260px}
+  #qrmi-cookies a{color:#fff;text-decoration:underline}
+  .qrmi-cookies__btns{display:flex;gap:8px}
+  #qrmi-cookies button{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:transparent;color:#fff;font-weight:600;cursor:pointer}
+  #qrmi-cookies button.ok{background:#f39200;border-color:#f39200}
+</style>
+<script>
+  (function(){
+    var box = document.getElementById('qrmi-cookies');
+    var dom = /qrminstitute\.es$/.test(location.hostname) ? '; domain=.qrminstitute.es' : '';
+    function guardar(v){
+      document.cookie = 'qrmi_consent=' + v + '; max-age=' + (180*24*3600) + '; path=/' + dom + '; SameSite=Lax; Secure';
+      gtag('consent', 'update', { analytics_storage: v });
+      box.hidden = true;
+    }
+    if (!/(?:^|; )qrmi_consent=/.test(document.cookie)) box.hidden = false;
+    box.addEventListener('click', function(e){ var v = e.target.getAttribute('data-c'); if (v) guardar(v); });
+    window.qrmiCookies = function(){ box.hidden = false; };
+  })();
+</script>
 </body>
 </html>

@@ -23,12 +23,13 @@ function escapar(txt = '') {
 		.replace(/"/g, '&quot;');
 }
 
-function construirMensaje({ nombre, empresa, email, telefono, mensaje }) {
+function construirMensaje({ nombre, empresa, email, telefono, mensaje, newsletter }) {
 	const filas = [
 		['Nombre', nombre],
 		['Empresa', empresa || '—'],
 		['Email', email],
 		['Teléfono', telefono || '—'],
+		['Newsletter', newsletter || 'No'],
 	];
 
 	const html = `
@@ -66,6 +67,29 @@ function construirMensaje({ nombre, empresa, email, telefono, mensaje }) {
 	return { html, texto };
 }
 
+/**
+ * Alta en la newsletter (lista "Newsletter" de Odoo) a través del formulario
+ * que ya tiene la web principal, para no duplicar claves de Odoo aquí.
+ * Si falla, la solicitud sigue adelante: la newsletter es un extra.
+ */
+async function altaNewsletter(nombre, email) {
+	const datos = new URLSearchParams({
+		action: 'qrmi_nl_subscribe',
+		nombre,
+		email,
+		privacidad: '1',
+		web: '',
+		t: String(Math.floor(Date.now() / 1000) - 60),
+	});
+	const res = await fetch('https://qrminstitute.es/wp-admin/admin-ajax.php', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+		body: datos.toString(),
+	});
+	const json = await res.json().catch(() => ({}));
+	if (!res.ok || !json.success) throw new Error(`Newsletter ${res.status}`);
+}
+
 async function enviarCorreo({ desde, para, replyTo, asunto, html, texto }) {
 	const res = await fetch('https://api.resend.com/emails', {
 		method: 'POST',
@@ -96,7 +120,8 @@ export default async function handler(req, res) {
 	}
 
 	const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {};
-	const { nombre, empresa, email, telefono, mensaje, _gotcha } = body;
+	const { nombre, empresa, email, telefono, mensaje, _gotcha, newsletter } = body;
+	const quiereNewsletter = newsletter === '1' || newsletter === true || newsletter === 'on';
 
 	// Campo trampa: los robots lo rellenan, las personas no lo ven.
 	if (_gotcha) return res.status(200).json({ ok: true });
@@ -114,7 +139,7 @@ export default async function handler(req, res) {
 		});
 	}
 
-	const datos = { nombre, empresa, email, telefono, mensaje };
+	const datos = { nombre, empresa, email, telefono, mensaje, newsletter: quiereNewsletter ? 'Sí' : 'No' };
 	const { html, texto } = construirMensaje(datos);
 	const asunto = `Nueva solicitud · ${nombre}${empresa ? ` (${empresa})` : ''}`;
 
@@ -124,11 +149,21 @@ export default async function handler(req, res) {
 		{ nombre: 'aviso', para: process.env.AVISO_PARA },
 	].filter((d) => d.para);
 
-	const resultados = await Promise.allSettled(
-		destinos.map((d) =>
-			enviarCorreo({ desde, para: d.para, replyTo: email, asunto, html, texto }),
+	const [resultadosCorreo, resultadoNewsletter] = await Promise.all([
+		Promise.allSettled(
+			destinos.map((d) =>
+				enviarCorreo({ desde, para: d.para, replyTo: email, asunto, html, texto }),
+			),
 		),
-	);
+		quiereNewsletter
+			? altaNewsletter(String(nombre).slice(0, 120), String(email).slice(0, 160)).then(
+					() => null,
+					(err) => err,
+				)
+			: Promise.resolve(null),
+	]);
+	if (resultadoNewsletter) console.error('Fallo en el alta de la newsletter:', resultadoNewsletter);
+	const resultados = resultadosCorreo;
 
 	resultados.forEach((r, i) => {
 		if (r.status === 'rejected') console.error(`Fallo enviando a ${destinos[i].nombre}:`, r.reason);

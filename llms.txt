@@ -51,10 +51,14 @@ Certificación: cuestionario el 19 de diciembre y entrega del caso práctico el 
 
 - Web: https://silver.qrminstitute.es/
 - Email: info@qrminstitute.com
-- Teléfono: +34 93 249 71 38 · Móvil: +34 629 87 92 17
+- Teléfono: +34 629 87 92 17
 - Dirección: Carrer Historiador Ramón d'Abadal i de Vinyals, 5 · 08500 Vic (Barcelona), España
 
 ## Enlaces
 
 - [Landing del programa](https://silver.qrminstitute.es/)
 - [Política de privacidad](https://silver.qrminstitute.es/politica-privacidad.html)
+- [QRM Institute Spain (web principal)](https://qrminstitute.es/)
+- [Qué es Quick Response Manufacturing](https://qrminstitute.es/quick-response-manufacturing/)
+- [Blog MomentoAgile](https://qrminstitute.es/blog/)
+- [Sharpa, plataforma de cultura organizativa de QRM Institute](https://sharpa.qrminstitute.es/)
